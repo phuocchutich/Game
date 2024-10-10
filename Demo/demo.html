@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Info Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f7f7;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .video-info {
+            margin-top: 20px;
+            display: none;
+        }
+        .video-info h3 {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>YouTube Video Info Tool</h1>
+    <input type="text" id="videoId" placeholder="Enter YouTube Video ID">
+    <button id="fetchInfo">Get Video Info</button>
+
+    <div class="video-info" id="videoInfo">
+        <h3 id="title"></h3>
+        <p><strong>Description:</strong> <span id="description"></span></p>
+        <p><strong>Views:</strong> <span id="views"></span></p>
+    </div>
+</div>
+
+<script src="Demo.js"></script>
+
+</body>
+</html>
