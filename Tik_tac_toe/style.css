@@ -1,0 +1,126 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    text-align: center;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    width: 350px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px); /* Kích thước mỗi ô */
+    grid-template-rows: repeat(3, 100px);
+    margin-bottom: 20px;
+}
+
+.cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Thêm đường kẻ ngang và dọc */
+.cell:nth-child(-n+6) {
+    border-bottom: 4px solid #26a69a; /* Đường ngang bên dưới */
+}
+
+.cell:nth-child(3n+1),
+.cell:nth-child(3n+2) {
+    border-right: 4px solid #26a69a; /* Đường dọc bên phải */
+}
+
+.cell:hover {
+    background-color: #e0e0e0;
+}
+
+.status {
+    margin-bottom: 20px;
+    font-size: 1.25rem;
+    color: #555;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+button:active {
+    background-color: #3e8e41;
+}
+/* Phần chế độ chơi (Dễ, Trung bình, Khó) */
+.difficulty {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.difficulty label {
+    font-size: 1rem;
+    color: #333;
+    margin-right: 15px;
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+}
+
+select {
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: 2px solid #007bff;
+    border-radius: 20px;
+    outline: none;
+    background-color: #f0f0f0;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+select:focus {
+    border-color: #0056b3;
+    box-shadow: 0 0 8px rgba(0, 86, 179, 0.5);
+}
+
+option {
+    font-family: 'Arial', sans-serif;
+    padding: 10px;
+}
