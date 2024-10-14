@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    background-image: url("./hearts.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#yes {
+    
+    background-color:#ED1022;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+#no {
+    background-color:#ED1022;
+    color: white;
+    border: none;
+    border-radius: 10px;
+}
+
+

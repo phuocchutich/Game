@@ -1,0 +1,70 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    margin: 0;
+    padding: 20px;
+}
+
+#puzzle-board {
+    position: relative;
+    width: 400px; /* Chiều rộng tổng của bảng ghép hình (hình chữ nhật) */
+    height: 400px; /* Đảm bảo tỷ lệ phù hợp với số lượng hàng và cột */
+    border: 2px solid #333;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+}
+
+#pieces {
+    position: relative;
+    width: 400px; /* Đảm bảo các mảnh ghép không chồng lên nhau */
+    height: 400px; 
+    border: 2px dashed #666;
+    background-color: #e8e8e8;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.piece, .slot {
+    position: absolute;
+    box-sizing: border-box;
+    border: 1px solid #999;
+    background-color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease; /* Cho hiệu ứng mượt hơn khi di chuyển */
+}
+
+.piece {
+    background-size: 20% 20%; /* Thu nhỏ tấm hình gốc xuống 20% */
+    background-repeat: no-repeat;
+    z-index: 10; /* Giữ các mảnh ghép trên cùng khi di chuyển */
+}
+
+.slot {
+    background-color: #ccc;
+    border: 2px dashed #999; /* Tạo viền cho các ô */
+}
+
+#controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0871e2;
+}

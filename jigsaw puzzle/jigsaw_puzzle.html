@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jigsaw Puzzle Game</title>
+    <link rel="stylesheet" href="jigsaw_puzzle.css">
+</head>
+<body>
+    <h1>Jigsaw Puzzle Game</h1>
+    <div class="puzzle-container">
+        <div id="puzzle-board" class="board">
+            <div id="puzzle-image"></div> <!-- Tấm hình gốc mờ -->
+            <div id="pieces" class="pieces"></div> <!-- Các mảnh ghép -->
+        </div>
+        <div class="original-image">
+            <h3>Original Image</h3>
+            <img src="img/img1.jpg" alt="Original" class="original">
+        </div>
+    </div>
+    <button id="shuffle-btn">Shuffle</button>
+    <button id="check-btn">Check</button>
+
+    <script src="jigsaw_puzzle.js"></script>
+</body>
+</html>

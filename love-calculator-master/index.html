@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Love Calculator</title>
+       <style>
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Chiều cao full màn hình */
+    background-size: cover; /* Tự động co giãn để phủ đầy màn hình */
+    background-position: center; /* Đặt hình nền ở giữa màn hình */
+}
+
+/* Hình nền cho máy tính (desktop) */
+@media (min-width: 1024px) {
+    body {
+        background-image: url('hearts.jpg'); /* Hình nền cho máy tính */
+    }
+}
+
+/* Hình nền cho điện thoại (mobile) */
+@media (max-width: 1023px) {
+    body {
+        background-image: url('love.jpg'); /* Hình nền cho điện thoại */
+    }
+}
+
+/* Style cho nội dung chính */
+#content-box {
+   
+    margin-top: 50px;
+    width: 90vw; /* Chiếm 90% màn hình */
+    max-width: 500px; /* Giới hạn chiều rộng tối đa */
+    height: auto; /* Chiều cao tự động */
+    margin: 0 auto; /* Canh giữa */
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tăng khoảng cách giữa các nút */
+button {
+    height: 45px;
+    width: 150px;
+    margin: 15px 0; /* Tăng khoảng cách giữa các nút */
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 8px; /* Bo tròn góc cho nút */
+    cursor: pointer;
+    background-color: #f03e3e;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #d32f2f;
+}
+
+
+/* Hiệu chỉnh văn bản */
+h1, h2, p {
+    font-size: 20px; /* Tăng kích thước chữ để dễ đọc hơn trên màn hình dọc */
+}
+
+/* Hiển thị tốt hơn trên màn hình nhỏ */
+@media (max-width: 800px) {
+    #content-box {
+        width: 95vw; /* Chiếm 95% màn hình dọc nhỏ */
+        padding: 10px; /* Giảm khoảng cách padding */
+    }
+
+    button {
+        font-size: 16px; /* Giảm kích cỡ font cho nút */
+        padding: 12px 24px; /* Giảm kích thước nút */
+    }
+
+    h1, h2, p {
+        font-size: 18px; /* Giảm kích thước font cho tiêu đề và văn bản */
+    }
+}
+
+/* Đối với các màn hình cực kỳ nhỏ (iPhone 12 Pro hoặc Note 20 Ultra) */
+@media (max-width: 600px) {
+    #content-box {
+        width: 95vw; /* Giảm chiều rộng cho các màn hình rất nhỏ */
+        padding: 5px; /* Giảm khoảng cách padding */
+    }
+
+    button {
+        font-size: 14px; /* Giảm kích thước font */
+        padding: 10px 20px; /* Giảm kích thước nút */
+    }
+
+    h1, h2, p {
+        font-size: 16px; /* Giảm kích thước font để vừa màn hình nhỏ */
+    }
+}
+/* Định dạng hiệu ứng icon 🥰 và 🤔 kiểu pháo hoa */
+.icon {
+    position: absolute;
+    font-size: 30px;
+    opacity: 0;
+    animation: explode 3s ease forwards;
+    z-index: 9999; /* Đảm bảo hiệu ứng nằm trên các phần tử khác */
+}
+
+/* Animation pháo hoa */
+@keyframes explode {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(var(--x), var(--y)) scale(1.5);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(0.5);
+    }
+}
+
+/* Đảm bảo các icon pháo hoa di chuyển đúng theo màn hình */
+@media (max-width: 1024px) {
+    /* Điều chỉnh font-size cho nhỏ hơn trên điện thoại */
+    .icon {
+        font-size: 24px; /* Giảm kích thước icon trên màn hình nhỏ */
+    }
+}
+
+@media (max-width: 600px) {
+    /* Giảm kích thước icon cho các màn hình cực nhỏ */
+    .icon {
+        font-size: 20px;
+    }
+}
+
+       </style>
+    </head>
+    <body>
+        <div id="content-box">
+            <h1>Trắc Nghiệm tình yêu</h1>
+            <p>Hòa có yêu Phước hông 🥰🥰🥰</p>
+            <br>
+            <button id="yes">Có ❤</button>
+            <button id="no">Không 💔</button>
+            <h2 id="result-message"></h2>
+            <div id="icon-container"></div> <!-- Container chứa icon 🥰 và 🤔 -->
+
+            <script>
+                const yesBtn = document.getElementById('yes');
+                const noBtn = document.getElementById('no');
+                const resultMessage = document.getElementById('result-message');
+                const iconContainer = document.getElementById('icon-container');
+                let mouseOverCount = 0;
+
+                yesBtn.addEventListener('click', () => {
+                    resultMessage.innerText = "Anh cũng thương em nhìu lắm á 🥰🥰🥰!";
+
+                    // Tạo icon 🥰 bay theo kiểu pháo hoa
+                    for (let i = 0; i < 20; i++) {
+                        const icon = document.createElement('div');
+                        icon.innerText = '🥰';
+                        icon.classList.add('icon');
+                        icon.style.setProperty('--x', `${Math.random() * 400 - 200}px`); // Hướng ngẫu nhiên theo chiều ngang
+                        icon.style.setProperty('--y', `${Math.random() * 400 - 200}px`); // Hướng ngẫu nhiên theo chiều dọc
+                        icon.style.left = '50%';
+                        icon.style.top = '50%';
+                        icon.style.transform = 'translate(-50%, -50%)';
+                        iconContainer.appendChild(icon);
+
+                        // Xóa icon sau khi hoàn thành animation
+                        setTimeout(() => {
+                            icon.remove();
+                        }, 3000); // 3 giây để trùng với thời gian của animation
+                    }
+                });
+
+                noBtn.addEventListener('mouseover', () => {
+                    // Di chuyển nút "Không" ngẫu nhiên
+                    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+                    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+                    noBtn.style.position = "absolute";
+                    noBtn.style.left = `${x}px`;
+                    noBtn.style.top = `${y}px`;
+                    noBtn.style.cursor = "not-allowed";
+                    // Tăng số lần di chuột qua nút "Không"
+                    mouseOverCount++;
+                    // Khi di chuột qua 2 lần, hiện thông báo và tạo icon 🤔
+                    if (mouseOverCount === 2) {
+                        resultMessage.innerText = "Anh hông tin😭😭😭";
+
+                        // Tạo icon 🤔 kiểu pháo hoa
+                        for (let i = 0; i < 20; i++) {
+                            const icon = document.createElement('div');
+                            icon.innerText = '🤔';
+                            icon.classList.add('icon');
+                            icon.style.setProperty('--x', `${Math.random() * 400 - 200}px`); // Hướng ngẫu nhiên theo chiều ngang
+                            icon.style.setProperty('--y', `${Math.random() * 400 - 200}px`); // Hướng ngẫu nhiên theo chiều dọc
+                            icon.style.left = '50%';
+                            icon.style.top = '50%';
+                            icon.style.transform = 'translate(-50%, -50%)';
+                            iconContainer.appendChild(icon);
+                            // Xóa icon sau khi hoàn thành animation
+                            setTimeout(() => {
+                                icon.remove();
+                            }, 3000); // 3 giây để trùng với thời gian của animation
+                        }
+                    }
+                    if(mouseOverCount === 4) {
+                        resultMessage.innerText = "Đừng nhấn nữa mà😭😭😭 ";
+
+                        // Tạo icon 🤔 kiểu pháo hoa
+                        for (let i = 0; i < 20; i++) {
+                            const icon = document.createElement('div');
+                            icon.innerText = '😭';
+                            icon.classList.add('icon');
+                            icon.style.setProperty('--x', `${Math.random() * 400 - 200}px`); // Hướng ngẫu nhiên theo chiều ngang
+                            icon.style.setProperty('--y', `${Math.random() * 400 - 200}px`); // Hướng ngẫu nhiên theo chiều dọc
+                            icon.style.left = '50%';
+                            icon.style.top = '50%';
+                            icon.style.transform = 'translate(-50%, -50%)';
+                            iconContainer.appendChild(icon);
+
+                            // Xóa icon sau khi hoàn thành animation
+                            setTimeout(() => {
+                                icon.remove();
+                            }, 3000); // 3 giây để trùng với thời gian của animation
+                        }
+                    }
+                });
+            </script>
+        </div>
+    </body>
+</html>
